@@ -1,0 +1,1 @@
+# xfce-nameday-plugin
