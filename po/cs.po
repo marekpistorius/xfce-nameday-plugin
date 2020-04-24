@@ -1,0 +1,123 @@
+# Czech translation for xfce4-nameday-plugin
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the xfce4-nameday-plugin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfce4-nameday-plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-08-17 15:21+0200\n"
+"PO-Revision-Date: 2011-08-17 15:21+0100\n"
+"Last-Translator: Mank <mank@no-ip.sk>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-08-12 13:33+0000\n"
+"X-Generator: Launchpad (build 13674)\n"
+
+#: panel-plugin/nameday-plugin.c:148
+msgid "No file or maybe corupted"
+msgstr "Žádný soubor nebo je soubor poškozen"
+
+#: panel-plugin/nameday-plugin.c:150
+#: panel-plugin/nameday-plugin.c:153
+msgid "not existing day"
+msgstr "Neznamý den"
+
+#: panel-plugin/nameday-plugin.c:171
+msgid "Dont go here"
+msgstr "Něco je špatně ops"
+
+#: panel-plugin/nameday-plugin.c:207
+msgid "Namedays have "
+msgstr "Svátek má "
+
+#: panel-plugin/nameday-plugin.c:292
+msgid "Easter date"
+msgstr "Datum Velikonoc"
+
+#: panel-plugin/nameday-plugin.c:297
+msgid "Search nameday"
+msgstr "Hledat Svatek"
+
+#: panel-plugin/nameday-plugin.c:352
+#: panel-plugin/nameday-plugin.c:457
+msgid "Date of Easter"
+msgstr "Datum Velikonoc"
+
+#: panel-plugin/nameday-plugin.c:374
+msgid "_rok ?"
+msgstr "_rok ?"
+
+#: panel-plugin/nameday-plugin.c:479
+msgid "_Nameday..."
+msgstr "_Svátek..."
+
+#: panel-plugin/nameday-plugin.c:565
+msgid "Cannot update date"
+msgstr "Nejde obnovit datum"
+
+#: panel-plugin/nameday-plugin.c:600
+#, c-format
+msgid ""
+"Wrong set year: %d \n"
+" Program can work with years  betwen 1583 and 2498.\n"
+" Years between 1950 and 2049 can set by last two numbers."
+msgstr ""
+"Špatný ro: %d \n"
+" Program pracuje s roky mezi 1583 a 2498.\n"
+" Roky mezi 1950 a 2049 je možné zadat dvojciferně"
+
+#: panel-plugin/nameday-plugin.c:624
+#, c-format
+msgid "Easter sunday in %d is %d. %d "
+msgstr "Velikonoční neděle v %d je %d. %d "
+
+#: panel-plugin/nameday-plugin.c:631
+#, c-format
+msgid "Namedays for name %s is at %s"
+msgstr "Svátek pro jméno %s je %s"
+
+#: panel-plugin/nameday-plugin-data.c:57
+msgid "Somethinks bad"
+msgstr "Něco je špatně ops"
+
+#: panel-plugin/nameday-plugin-data.c:75
+msgid "Somethink wrong"
+msgstr "Něco je špatně ops"
+
+#: panel-plugin/nameday-plugin-dialogs.c:75
+#, c-format
+msgid "Unable to open the following url: %s"
+msgstr "Nelze otevřít následující adresu url: %s"
+
+#: panel-plugin/nameday-plugin-dialogs.c:107
+msgid "Namedays for :"
+msgstr "Svátek pro :"
+
+#: panel-plugin/nameday-plugin-dialogs.c:150
+msgid "Nameday Plugin"
+msgstr "Svátkový Applet"
+
+#: panel-plugin/nameday-plugin-dialogs.c:189
+msgid "Namedays applet for Xfce"
+msgstr "Svátkový Applet pro Xfce"
+
+#: panel-plugin/nameday-plugin-dialogs.c:191
+msgid "Namedays Plugin"
+msgstr "Svátkový Applet"
+
+#~ msgid "not exisist day"
+#~ msgstr "Neznámý den"
+
+#~ msgid "Datum Velikonoc"
+#~ msgstr "Datum Velikonoc"
+
+#~ msgid "Hledat svatek"
+#~ msgstr "Hledat svatek"
+
+#~ msgid "Datum Svatku"
+#~ msgstr "Datum Svatku"

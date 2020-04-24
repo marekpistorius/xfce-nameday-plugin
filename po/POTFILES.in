@@ -1,0 +1,5 @@
+panel-plugin/nameday-plugin.c
+panel-plugin/nameday-plugin-dialogs.c
+panel-plugin/nameday-plugin.desktop.in
+panel-plugin/nameday-plugin-data.c
+panel-plugin/nameday-plugin-callendar.c

@@ -1,0 +1,25 @@
+﻿0.1.0
+=====
+- Fix some code around
+- Add basic overview Calendar with namedays
+
+0.0.3
+=====
+- New Settings of count of Namedays in tootips
+- Added Polish Calendar
+- Fixed Slovak Calendar
+
+0.0.2
+=====
+- MultiLang Calendar Support
+- LIBGUI to LIBUI
+- Plugin is now as library
+- Copy Nameday on Right Click
+- Fix isue with change language
+
+0.0.1
+=====
+- Initial version
+- Czech&Slovak namedays
+- Tooltips for five day after today
+- Search date of nameday
