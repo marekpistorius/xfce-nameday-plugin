@@ -47,7 +47,7 @@ typedef struct
 
 	gint 		updatetimeout;
     /* settings */
-	gchar           *setting1;
+	gchar        *setting1;
 	gint		 setcount;
 
 }

@@ -43,7 +43,7 @@ int getNamedaysForFile(gchar *_file, char *dData[365])
 	int i = 0;
 	file = g_fopen(_file, "r");
 
-	if(file == NULL)
+	if(!file)
 		return 1;
 
 	while(fgets(sData,256,file) != NULL)
@@ -73,7 +73,7 @@ gchar *findNamedaysInFile(gchar *_file, gchar *name)
 	char sData[256];
 	file = g_fopen(_file, "r");
 
-	if( file == NULL)
+	if(!file)
 		  return NULL;
 
 	 while (fgets(sData,256,file) != NULL)
@@ -104,7 +104,7 @@ gboolean getNamedaysForFileInGList(gchar *_file, GList *namedays)
 
 	file = g_fopen(_file, "r");
 
-	 if( file == NULL)
+	 if(!file)
 		  return FALSE;
 
 	 while (fgets(sData,256,file) != NULL)
@@ -124,7 +124,7 @@ gchar* getNamedayDayForDayMonth(gchar*_file, guint day, guint month)
 	char sData[256];
 	file = g_fopen(_file, "r");
 
-	if(file == NULL)
+	if(!file)
 			return "None";
 
 	while(fgets(sData,256,file) != NULL)
@@ -187,7 +187,7 @@ gchar *NamedayInFebruaryLeapYear(gchar *file)
 	gchar name[366];
 	f = g_fopen(file, "r");
 
-	if(f == NULL)
+	if(!f)
 		return NULL;
 	if (fgets(name,366,f)!= NULL)
 	{

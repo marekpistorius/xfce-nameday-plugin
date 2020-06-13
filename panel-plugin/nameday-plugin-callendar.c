@@ -75,7 +75,7 @@ void initDialogWithCalandar(XfcePanelPlugin *plugin, NamedaysPlugin *nm)
 	GDate *date = g_date_new();
 	g_date_set_time_t(date,time(NULL));
 
-	if(!date) {
+	if(date) {
 		gtk_calendar_mark_day(GTK_CALENDAR(nmd_cal->calendar),g_date_get_day(date));
 	}
 

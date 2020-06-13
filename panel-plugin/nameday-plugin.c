@@ -34,7 +34,8 @@
 #include "nameday-plugin-callendar.h"
 
 /* default settings */
-#define DEFAULT_SETTING1 "/usr/share/xfce4/nameday/data/czech.dat"
+#define DATA_STR "/usr/share/"
+#define DEFAULT_SETTING1 DATA_STR "/xfce4/nameday/data/czech.dat"
 #define DEFAULT_COUNT 5
 
 #define UPDATE_TIME      1800
@@ -412,11 +413,11 @@ static void onEasters(GtkWidget *widget, gpointer data)
 
   if (response == GTK_RESPONSE_OK)
   {
-	gint res = 0;
-	gchar *tmp = getEaster(gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(local_entry1)));
-	res = showDialog(tmp);
-	g_free(tmp);
-	gtk_widget_destroy (dialog);
+	 gint res = 0;
+	 gchar *tmp = getEaster(gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(local_entry1)));
+	 res = showDialog(tmp);
+	 g_free(tmp);
+	 gtk_widget_destroy (dialog);
   }
 }
 
@@ -535,8 +536,7 @@ static void onSearchNmD(GtkWidget *widget, gpointer data)
 		gchar *tmp = getNamedayDay((gchar *)gtk_entry_get_text(GTK_ENTRY(local_entry1)),(NamedaysPlugin*)data);
 		if(tmp)
 		{
-			gint res = 0
-			res = showDialog(tmp);
+			gint res = showDialog(tmp);
 			g_free(tmp);
 			gtk_widget_destroy (dialog);
 		}
@@ -586,7 +586,7 @@ static gboolean on_tooltip_cb (GtkWidget        *widget,
   GDate *date;
   time_t times = time(NULL);
   /* Actual Date and x after */
-  gint set = nmday->setcount;
+  gint count_s = nmday->setcount;
   date = g_date_new();
   g_date_set_time_t (date, times);
 
@@ -598,7 +598,7 @@ static gboolean on_tooltip_cb (GtkWidget        *widget,
   {
 	gchar *markup_text;
 	strcpy(mar_text,"");
-	for(int i = 0;i < set;i++)
+	for(int i = 0;i < count_s;i++)
 	{
 	  GDate *date;
 	  date = g_date_new();
