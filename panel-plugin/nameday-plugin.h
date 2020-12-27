@@ -1,6 +1,5 @@
 /*  $Id$
  *
- *  Copyright (c) mmaniu
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -22,10 +21,6 @@
 
 G_BEGIN_DECLS
 
-enum {
-	TYPE_STR = 0,
-};
-
 /* plugin structure */
 typedef struct
 {
@@ -41,14 +36,11 @@ typedef struct
 	GtkWidget		*combo;
 	GtkWidget       *spin;
 
-	#if !GTK_CHECK_VERSION(2,12,0)
-		GtkTooltips     *tooltips;
-	#endif
-
 	gint 		updatetimeout;
     /* settings */
 	gchar        *setting1;
-	gint		 setcount;
+	gint		setcount;
+	GQueue*		 namedays_list;
 
 }
 NamedaysPlugin;

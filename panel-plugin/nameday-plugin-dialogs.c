@@ -1,7 +1,5 @@
 /*  $Id$
  *
- *  Copyright (c) mmaniu
- *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
@@ -26,32 +24,30 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4panel/libxfce4panel.h>
-
 #include "nameday-plugin.h"
 #include "nameday-plugin-data.h"
 #include "nameday-plugin-dialogs.h"
+#include "nameday-utils.h"
+#include "nameday-definitions.h"
 
-/* the website url */
-#define PLUGIN_WEBSITE "http://github.com/mmaniu"
+/* Border? */
 #define BORDER           8
 
 typedef void (*cb_function) (NamedaysPlugin *);
 static cb_function cb = NULL;
 
-void
-apply_options (xfcenameday_dialog *dialog)
+void apply_options (xfcenameday_dialog *dialog)
 {
-	GDate *date;
-	char * tmp;
-	gchar *set;
-	date = g_date_new();
+	g_autofree gchar * tmp;
+	g_autoptr(GDate) date = g_date_new();
 	g_date_set_time_t (date, time (NULL));
-	/**/
-	set = gtk_combo_box_get_active_text(GTK_COMBO_BOX(dialog->nmdplg->combo));
-	dialog->nmdplg->setting1 = g_strdup(set);
 	
-	tmp = g_strdup(load_nm(date,dialog->nmdplg));
-	if(tmp)
+	gchar* combo_set = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(dialog->nmdplg->combo));
+	dialog->nmdplg->setting1 = g_strdup(combo_set);
+	
+	tmp = load_nm(date,dialog->nmdplg);
+	
+	if(G_LIKELY(tmp!= NULL))
 	{
 		gtk_label_set_text(GTK_LABEL(dialog->nmdplg->label), tmp);
 	}	
@@ -71,6 +67,7 @@ nameday_configure_response (GtkWidget    *dialog,
   if (response == GTK_RESPONSE_HELP)
     {
       /* show help */
+      //todo: change?
       result = g_spawn_command_line_async ("exo-open --launch WebBrowser " PLUGIN_WEBSITE, NULL);
 
       if (G_UNLIKELY (result == FALSE))
@@ -99,20 +96,20 @@ xfcenameday_dialog * create_config_dialog(NamedaysPlugin *data, GtkWidget *vbox)
 {
 	xfcenameday_dialog *dialog;
 	GtkWidget *label,*hbox,*label2;
-	GList *list = NULL;
-	GList *stmp;
+	GList *list = NULL ,*stmp = NULL;
 	gint i = 0;
 	dialog = g_slice_new0(xfcenameday_dialog);
 	
 	dialog->nmdplg = (NamedaysPlugin *)data;
 	dialog->dialog = gtk_widget_get_toplevel (vbox);
-	dialog->nmdplg->spin =  gtk_spin_button_new_with_range(0,50,1);
+	dialog->nmdplg->spin =  gtk_spin_button_new_with_range(0,70,1);
 	gtk_spin_button_set_value (GTK_SPIN_BUTTON(dialog->nmdplg->spin),dialog->nmdplg->setcount);
 	label = gtk_label_new(_("Namedays for :"));
 	label2 = gtk_label_new (_("Set Count of Tooltips Namedays"));
-	hbox = gtk_hbox_new(FALSE, BORDER);
+	hbox = gtk_box_new (GTK_ORIENTATION_VERTICAL,BORDER);
 	dialog->nmdplg->combo = gtk_combo_box_text_new();
-	list = getdirlist("/usr/share/xfce4/nameday/data/");
+    //TODO: not path directly?
+	list = getdirlist(NAMEDAY_PATH_GLOBAL "/data/");
 
 	for(stmp = list; stmp ;stmp = g_list_next(stmp),i++)
 	{
@@ -137,10 +134,12 @@ xfcenameday_dialog * create_config_dialog(NamedaysPlugin *data, GtkWidget *vbox)
 
 static void update_config(NamedaysPlugin *data)
 {
-	gchar *text = gtk_combo_box_get_active_text(GTK_COMBO_BOX(data->combo));
-	data->setting1 = g_strdup(text);
+	gchar *text = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(data->combo));
+	if(G_UNLIKELY(text!= NULL))
+		data->setting1 = g_strdup(text);
 	gint count = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(data->spin));
-	data->setcount = count;
+	if(G_UNLIKELY(count < 0))
+		data->setcount = count;
 }
 
 void nameday_configure(XfcePanelPlugin *plugin,
@@ -155,18 +154,19 @@ void nameday_configure(XfcePanelPlugin *plugin,
   /* create the dialog */
   dlg = gtk_dialog_new_with_buttons(_("Nameday Plugin"),
                                                 GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (plugin))),
-                                                GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
-                                                GTK_STOCK_HELP, GTK_RESPONSE_HELP,
-                                                GTK_STOCK_CLOSE, GTK_RESPONSE_OK,
+                                                GTK_DIALOG_DESTROY_WITH_PARENT ,         
+                                                "gtk-help", GTK_RESPONSE_HELP,
+                                                _("_Close"),_("_OK"),
                                                 NULL);
 
   gtk_container_set_border_width (GTK_CONTAINER (dlg), 2);
-  vbox = gtk_vbox_new (FALSE, BORDER);
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL,BORDER);
   gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER - 2);
   gtk_widget_show (vbox);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dlg)->vbox), vbox, TRUE, TRUE, 0);
+  gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dlg))),vbox,TRUE,TRUE,0 );
 
   /* set dialog icon */
+  //todo probaly?
   gtk_window_set_icon_name (GTK_WINDOW (dlg), "xfce4-settings");
   
   dialog = create_config_dialog (nmd, vbox);
@@ -190,7 +190,7 @@ void nameday_configure(XfcePanelPlugin *plugin,
 void nameday_about (XfcePanelPlugin *plugin)
 {
    	gtk_show_about_dialog(NULL, "copyright", _("Namedays applet for Xfce"),
-								"license", "GPLv2,2020",
+								"license", "GPLv2, Me <maniu at pm dot me>,2020",
 								"program-name", _("Namedays Plugin"),
 								"version", VERSION,
 								"website", PLUGIN_WEBSITE,

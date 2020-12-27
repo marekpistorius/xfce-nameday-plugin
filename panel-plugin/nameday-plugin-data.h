@@ -1,7 +1,5 @@
 /*  $Id$
  *
- *  Copyright (c) mmaniu
- *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
@@ -19,8 +17,12 @@
  
 #ifndef __NAMEDAY_DATA_H__
 #define __NAMEDAY_DATA_H__
+
 #include <glib.h>
+
 G_BEGIN_DECLS
+
+GQueue* create_list_namedays();
 
 int getNamedaysForFile(gchar *_file, char *dData[365]);
 
@@ -31,11 +33,6 @@ gboolean getNamedaysForFileInGList(gchar *_file, GList *namedays);
 gchar *findNamedaysInFile(gchar *_file, gchar *name);
 
 gchar *NamedayInFebruaryLeapYear(gchar *file);
-
-//Utils
-GList *getdirlist(gchar *path);
-
-gchar *g_substr (const gchar* string, gint start, gint end);
 
 G_END_DECLS
 #endif

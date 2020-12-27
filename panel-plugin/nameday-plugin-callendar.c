@@ -1,7 +1,5 @@
 /*  $Id$
  *
- *  Copyright (c) mmaniu
- *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
@@ -25,7 +23,7 @@
 #include <gtk/gtk.h>
 
 #include <libxfce4ui/libxfce4ui.h>
-#include <libxfce4panel/libxfce4panel.h>
+#include <libxfce4panel/xfce-panel-plugin.h>
 
 #include "nameday-plugin.h"
 #include "nameday-plugin-dialogs.h"
@@ -33,18 +31,17 @@
 
 static gchar* onDetailFuncs(GtkCalendar *calendar, guint year, guint month, guint day, gpointer data)
 {
-	GDate* date = g_date_new_dmy(day, month, year);
+	g_autoptr(GDate) date = g_date_new_dmy(day, month, year);
 	return g_strdup_printf(_("Nameday have %s "),load_nm(date,(NamedaysPlugin *)data));
 }
 
 static void onDaySelected(GtkCalendar *calendar, gpointer data)
 {
 	nameday_calendar *nmd_cal = (nameday_calendar*)data;
-	guint year = 0 ,month =0,day=0;
+	guint year = 0 ,month = 0,day = 0;
 	gtk_calendar_get_date(calendar,&year,&month,&day);
-	GDate *date = g_date_new_dmy(day,month+1, year);
-	gchar *tmp = g_strdup(load_nm(date,nmd_cal->plugin));
-	gtk_label_set_text(GTK_LABEL(nmd_cal->label), tmp);
+	g_autoptr(GDate) date = g_date_new_dmy(day,month, year);
+	gtk_label_set_text(GTK_LABEL(nmd_cal->label), load_nm(date,nmd_cal->plugin));
 }
 
 void initDialogWithCalandar(XfcePanelPlugin *plugin, NamedaysPlugin *nm)
@@ -57,8 +54,8 @@ void initDialogWithCalandar(XfcePanelPlugin *plugin, NamedaysPlugin *nm)
 
 	dlg = gtk_dialog_new_with_buttons(_("Nameday Plugin Calendar"),
                                                 GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (plugin))),
-                                                GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
-                                                GTK_STOCK_CLOSE, GTK_RESPONSE_OK,
+                                                GTK_DIALOG_DESTROY_WITH_PARENT,
+                                                _("Close"), GTK_RESPONSE_OK,
 									NULL);
 
 	nmd_cal->calendar = gtk_calendar_new();
@@ -72,17 +69,17 @@ void initDialogWithCalandar(XfcePanelPlugin *plugin, NamedaysPlugin *nm)
 	gtk_widget_show_all(nmd_cal->main_widget);
 	gtk_calendar_set_detail_func(GTK_CALENDAR(nmd_cal->calendar),(GtkCalendarDetailFunc)onDetailFuncs,(gpointer)nm,g_free);
 
-	GDate *date = g_date_new();
+	g_autoptr(GDate) date = g_date_new();
 	g_date_set_time_t(date,time(NULL));
 
-	if(date) {
+	if(!date) {
 		gtk_calendar_mark_day(GTK_CALENDAR(nmd_cal->calendar),g_date_get_day(date));
 	}
 
 	g_signal_connect(nmd_cal->calendar,"day-selected",G_CALLBACK(onDaySelected),nmd_cal);
 
-	int response = gtk_dialog_run(GTK_DIALOG(dlg));
-	if(response == GTK_RESPONSE_OK)
+	int res = gtk_dialog_run(GTK_DIALOG(dlg));
+	if(res == GTK_RESPONSE_OK)
 		gtk_widget_hide_all(dlg);
 
 }

@@ -1,6 +1,5 @@
 /*  $Id$
  *
- *  Copyright (c) mmaniu
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -25,7 +24,7 @@ G_BEGIN_DECLS
 typedef struct {
 	GtkWidget *dialog;
 	NamedaysPlugin *nmdplg;
-}
+} 
 xfcenameday_dialog;
 
 void
@@ -40,8 +39,8 @@ xfcenameday_dialog *create_config_dialog(NamedaysPlugin *data, GtkWidget *vbox);
 void
 set_callback_config_dialog (xfcenameday_dialog * dialog,
                             void (cb) (NamedaysPlugin *));
-
-void apply_options (xfcenameday_dialog *dialog);
+                            
+void apply_options (xfcenameday_dialog *dialog);                            
 
 G_END_DECLS
 
