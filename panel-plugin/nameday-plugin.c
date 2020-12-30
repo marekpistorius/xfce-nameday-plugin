@@ -129,7 +129,7 @@ gchar *load_nm(GDate *date, NamedaysPlugin *nmday)
 		if( (index > 0) && (index < 367) )
 		{
 			DBG("Load");
-			return (gchar*)g_queue_peek_nth (nmday->namedays_list,index);
+			return (gchar*)g_list_nth (nmday->namedays_list,index);
 		}
 	}
 
@@ -277,15 +277,15 @@ nameday_construct (XfcePanelPlugin *plugin)
   g_date_set_time_t(date,time(NULL));
   gboolean bISLeap = g_date_is_leap_year(date->year);
   
-	if(G_UNLIKELY(!bISLeap)) {	
+/*	if(G_UNLIKELY(!bISLeap)) {	*/
 		nmday->namedays_list = create_list_namedays(nmday->setting1);
-	}
+/*	}
 	else { 
 		char buf[257];
 		sprintf(buf,"%s.leap",nmday->setting1);
 		nmday->namedays_list = create_list_namedays(buf);
 	}  	
-  
+  */
   /* add the ebox to the panel */
   gtk_container_add (GTK_CONTAINER (plugin), nmday->ebox);
 
