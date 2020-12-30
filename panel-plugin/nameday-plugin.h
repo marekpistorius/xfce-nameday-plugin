@@ -40,7 +40,7 @@ typedef struct
     /* settings */
 	gchar        *setting1;
 	gint		setcount;
-	GQueue*		 namedays_list;
+	GList*		 namedays_list;
 
 }
 NamedaysPlugin;
