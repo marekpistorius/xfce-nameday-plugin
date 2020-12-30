@@ -22,7 +22,7 @@
 
 G_BEGIN_DECLS
 
-GQueue* create_list_namedays();
+GList* create_list_namedays();
 
 int getNamedaysForFile(gchar *_file, char *dData[365]);
 
