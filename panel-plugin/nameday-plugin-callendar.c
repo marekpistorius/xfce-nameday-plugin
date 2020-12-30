@@ -80,6 +80,6 @@ void initDialogWithCalandar(XfcePanelPlugin *plugin, NamedaysPlugin *nm)
 
 	int res = gtk_dialog_run(GTK_DIALOG(dlg));
 	if(res == GTK_RESPONSE_OK)
-		gtk_widget_hide_all(dlg);
+		gtk_widget_hide(dlg);
 
 }
