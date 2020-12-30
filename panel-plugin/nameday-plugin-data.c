@@ -33,22 +33,22 @@
 #include "nameday-utils.h"
 #include "nameday-plugin-data.h"
 
-GQueue* create_list_namedays(const gchar* _file)
+GList* create_list_namedays(const gchar* _file)
 {
 
 	FILE *file;
 	char sData[256];
-	GQueue* list = g_queue_new ();
+	GList* list;
 
 	file = g_fopen(_file, "r");
 
 	 if( file == NULL)
-		  return NULL;
+		  return list;
 
 	 while (fgets(sData,256,file) != NULL)
 	 {
 		char *tmp = strrchr( sData, '|');
-		g_queue_push_head(list, g_strdup(tmp+1));
+		g_list_append(list, g_strdup(tmp+1));
 	 }
 	fclose(file);
 	return list;
