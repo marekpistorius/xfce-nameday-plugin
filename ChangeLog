@@ -1,8 +1,9 @@
 2020-202x	mmaniu
+	* Bump to GTK3+
 2016-2017	mmaniu
 
 	* === Released 0.1.0 ===
-	* Fix some cppcheck warning
+	* Fix some cppcheck warnings
 	* Fix leap year isue
-	* intial working ver
+	* intial working version
 

@@ -11,6 +11,9 @@ plugin_LTLIBRARIES = \
 	libnameday.la
 
 libnameday_la_SOURCES = \
+	nameday-definitions.h \
+	nameday-utils.c \
+	nameday-utils.h \
 	nameday-plugin.c							\
 	nameday-plugin.h							\
 	nameday-plugin-data.c						\
