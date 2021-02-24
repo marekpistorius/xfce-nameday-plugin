@@ -1,16 +1,13 @@
 What is it?
 ===========
 
-Xfce panel's plugin for show namedays.
-It is Inspired by (GdH, J. Nekvasila) applet for Gnome2
-
+Xfce's panel's plugin for show namedays.
 
 Installation
 ============
 ./autogen.sh --prefix=/usr/
 make
-make install (as root/with sudo)
-
+make install # (Note: root/with sudo/SU)
 
 How to report bugs?
 ===================
