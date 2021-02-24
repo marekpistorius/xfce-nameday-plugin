@@ -1,6 +1,6 @@
 ﻿/*  $Id$
  *
- *  Copyright (c) 2017-2021
+ *  Copyright (c) 2017-2022
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -277,15 +277,7 @@ nameday_construct (XfcePanelPlugin *plugin)
   g_date_set_time_t(date,time(NULL));
   gboolean bISLeap = g_date_is_leap_year(date->year);
   
-/*	if(G_UNLIKELY(!bISLeap)) {	*/
-		nmday->namedays_list = create_list_namedays(nmday->setting1);
-/*	}
-	else { 
-		char buf[257];
-		sprintf(buf,"%s.leap",nmday->setting1);
-		nmday->namedays_list = create_list_namedays(buf);
-	}  	
-  */
+	nmday->namedays_list = create_list_namedays(nmday->setting1);
   /* add the ebox to the panel */
   gtk_container_add (GTK_CONTAINER (plugin), nmday->ebox);
 

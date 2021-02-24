@@ -14,7 +14,6 @@
 // MA 02110-1301, USA.
 //
 
-
 #ifndef __NAMEDAY_UTIL_H__
 #define __NAMEDAY_UTIL_H__
 
