@@ -29,7 +29,7 @@ Depends on GTK+ 3.x+ and Xfce's 'standarts' Dependiences
 Install **Xfce-Nameday-Plugin** with 
 
 ```bash 
-  /autogen.sh --prefix=/usr/
+  ./autogen.sh --prefix=/usr/
   make
   make install 
 ```
