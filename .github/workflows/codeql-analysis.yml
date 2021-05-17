@@ -66,6 +66,7 @@ jobs:
     #    uses a compiled language
 
     - run: |
+        touch README
         ./autogen.sh --prefix=/usr
         make
     #   make bootstrap
