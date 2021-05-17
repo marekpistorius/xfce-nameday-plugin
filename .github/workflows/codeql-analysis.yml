@@ -64,7 +64,7 @@ jobs:
     #    uses a compiled language
 
     - run: |
-        autogen.sh --prefix=/usr
+        ./autogen.sh --prefix=/usr
         make
     #   make bootstrap
     #   make release
