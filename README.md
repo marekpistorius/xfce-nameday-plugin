@@ -1,9 +1,8 @@
+[![CodeQL](https://github.com/mmaniu/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mmaniu/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml)
 
 # Xfce Nameday Plugin
 
 Xfce's panel's plugin for show namedays.
-
-
 
 
 ## Features
