@@ -41,7 +41,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Install Dependencies
-      run: sudo apt install xfce4-dev-tools xfce4-panel-dev libxfce4ui-2-dev librsvg2-dev libxfce4util-dev gettext
+      run: sudo apt install xfce4-dev-tools xfce4-panel-dev libxfce4ui-2-dev librsvg2-dev libxfce4util-dev gettext  libxfce4panel-2.0-dev
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
