@@ -139,8 +139,8 @@ gchar *load_nm(GDate *date, NamedaysPlugin *nmday)
 static gboolean update_nameday(NamedaysPlugin *data)
 {
 	g_autofree gchar *tmp;
-	time_t t;
-	struct tm *tinfo;
+	//time_t t;
+	//struct tm *tinfo;
 	int h = 0;
 	g_autoptr(GDate) date = g_date_new();
 
@@ -159,9 +159,11 @@ static gboolean update_nameday(NamedaysPlugin *data)
 
 	g_date_clear(date, 1);
 	
-	time (&t);
-	tinfo = localtime(&t);
-	h = tinfo->tm_hour;
+	//time (&t);
+	//tinfo = localtime(&t);
+	//h = tinfo->tm_hour;
+	GDateTime* gtime = g_date_time_new_now_local(); 
+	h = g_date_time_get_hour(gtime);
 	if(h < 12)
 	{
 		data->updatetimeout = g_timeout_add_seconds((int)43200, (GSourceFunc) update_nameday, data);
