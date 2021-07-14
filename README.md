@@ -47,6 +47,6 @@ Contributions are always welcome!
   
 ## Feedback
 
-If you have any feedback, please reach out to us at me@m-maniu.me
+If you have any feedback, please reach out to us at monkey2maniu@gmail.com
 
   
