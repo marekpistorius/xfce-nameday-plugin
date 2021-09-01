@@ -118,7 +118,7 @@ static void nameday_read (NamedaysPlugin *nmday)
   nmday->setting1 = g_strdup (DEFAULT_LANG);
   nmday->setcount = DEFAULT_COUNT;	
 }
-///////////////////////////////////////////////////////////////////////////////////////////
+
 gchar *load_nm(GDate *date, NamedaysPlugin *nmday)
 {
 	guint index;
@@ -135,16 +135,21 @@ gchar *load_nm(GDate *date, NamedaysPlugin *nmday)
 
 	return NULL;	
 }
-////////////////////////////////////////////////////////////////////////////////////////////////
+
 static gboolean update_nameday(NamedaysPlugin *data)
 {
 	g_autofree gchar *tmp;
-	//time_t t;
-	//struct tm *tinfo;
-	int h = 0;
+	gint hour = 0;
 	g_autoptr(GDate) date = g_date_new();
 
-	g_date_set_time_t (date, time (NULL));
+  time_t now = time (NULL);
+  if (now == (time_t) -1)
+  {
+      DBG("No Valid Date");
+      return TRUE;
+  }  
+
+	g_date_set_time_t (date,now );
 
 	tmp = load_nm(date,data);
 
@@ -158,23 +163,22 @@ static gboolean update_nameday(NamedaysPlugin *data)
 	}	
 
 	g_date_clear(date, 1);
-	
-	//time (&t);
-	//tinfo = localtime(&t);
-	//h = tinfo->tm_hour;
-	GDateTime* gtime = g_date_time_new_now_local(); 
+
+	GDateTime* gtime = g_date_time_new_now(); 
 	h = g_date_time_get_hour(gtime);
-	if(h < 12)
+	
+  if(hour < 12)
 	{
 		data->updatetimeout = g_timeout_add_seconds((int)43200, (GSourceFunc) update_nameday, data);
 		return TRUE;
 	}
-	if(h > 12 && h < 23)
+	if(hour > 12 && hour < 23)
 	{
 		data->updatetimeout = g_timeout_add_seconds((int)3600, (GSourceFunc) update_nameday, data);
 		return TRUE;	
 	}
-	data->updatetimeout = g_timeout_add_seconds (UPDATE_TIME, (GSourceFunc) update_nameday, data);
+	
+  data->updatetimeout = g_timeout_add_seconds (UPDATE_TIME, (GSourceFunc) update_nameday, data);
 	return TRUE;
 }
 
