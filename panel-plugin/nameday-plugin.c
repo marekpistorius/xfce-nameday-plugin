@@ -164,7 +164,7 @@ static gboolean update_nameday(NamedaysPlugin *data)
 
 	g_date_clear(date, 1);
 
-	GDateTime* gtime = g_date_time_new_now(); 
+	GDateTime* gtime = g_date_time_new_now_local(); 
 	h = g_date_time_get_hour(gtime);
 	
   if(hour < 12)
