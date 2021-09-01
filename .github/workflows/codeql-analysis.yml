@@ -40,6 +40,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    - name: Update repository metadata
+      run: 
+        sudo apt-get update  
     - name: Install Dependencies
       run: sudo apt install xfce4-dev-tools xfce4-panel-dev libxfce4ui-2-dev libxfce4util-dev gettext  libxfce4panel-2.0-dev
 
