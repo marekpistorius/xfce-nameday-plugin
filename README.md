@@ -11,7 +11,7 @@ Xfce's panel's plugin for show namedays.
 - Show next [custom] number of namedays
 - Search in namedays
 - Show Date of Easter
-- GTK3+
+- GTK+ 3.x
 
   
 ## Screenshots
