@@ -2,15 +2,15 @@
 
 # Xfce Nameday Plugin
 
-Xfce's panel's plugin for show namedays.
+Xfce's panel's plugin for show [Name Days](https://en.wikipedia.org/wiki/Name_day) .
 
 
 ## Features
 
-- Show Nameday of Day
-- Show next [custom] number of namedays
+- Show Name Day of Day
+- Show next [custom] number of Name Days
 - Search in namedays
-- Show Date of Easter
+- Show date of Easter
 - GTK+ 3.x
 
   
@@ -37,7 +37,7 @@ Install **Xfce-Nameday-Plugin** with
 ## Authors and Acknowledgement
 
 - [@mmaniu](https://www.github.com/mmaniu) for development and design.
-Xfce's Team for Xfce DE
+Xfce's Team for Xfce Desktop Enviroments
   
 ## Contributing
 
