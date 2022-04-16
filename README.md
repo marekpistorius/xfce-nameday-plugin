@@ -1,5 +1,6 @@
 [![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.png?v=103)](https://opensource.org/licenses/GPL-3.0/)  
 [![CodeQL](https://github.com/mmaniu/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mmaniu/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml) 
+![Lines of code](https://img.shields.io/tokei/lines/github/mmaniu/xfce-nameday-plugin?style=for-the-badge)
 
 # Xfce Nameday Plugin
 
