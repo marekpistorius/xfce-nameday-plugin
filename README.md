@@ -49,6 +49,6 @@ Contributions are always welcome!
   
 ## Feedback
 
-If you have any feedback, please reach out to us at maniu@pm.me
+If you have any feedback, please reach out to us at me@maniu.eu
 
   
