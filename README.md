@@ -38,7 +38,7 @@ Install **Xfce-Nameday-Plugin** with
     
 ## Authors and Acknowledgement
 
-- [@mmaniu](https://www.github.com/mmaniu) for development and design.
+- [@marekpistorius](https://www.github.com/marekpistorius) for development and design.
 Xfce's Team for Xfce Desktop Enviroments
   
 ## Contributing
