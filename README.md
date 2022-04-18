@@ -1,5 +1,5 @@
 [![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.png?v=103)](https://opensource.org/licenses/GPL-3.0/) 
-[![CodeQL](https://github.com/mmaniu/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mmaniu/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml) 
+[![CodeQL](https://github.com/marekpistorius/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/marekpistorius/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml) 
 ![Maintenance](https://img.shields.io/maintenance/yes/2022)
 
 # Xfce Nameday Plugin
@@ -18,7 +18,7 @@ Xfce's panel's plugin for show [Name Days](https://en.wikipedia.org/wiki/Name_da
   
 ## Screenshots
 
-![App Screenshot](https://github.com/mmaniu/xfce-nameday-plugin/blob/main/screenshot/img.png?raw=true)
+![App Screenshot](https://github.com/marekpistorius/xfce-nameday-plugin/blob/main/screenshot/img.png?raw=true)
 
   
 ## Tech Stack
