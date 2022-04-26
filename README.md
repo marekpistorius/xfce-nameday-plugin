@@ -18,7 +18,7 @@ Xfce's panel's plugin for show [Name Days](https://en.wikipedia.org/wiki/Name_da
   
 ## Screenshots
 
-![App Screenshot](https://github.com/marekpistorius/xfce-nameday-plugin/blob/main/screenshot/img.png?raw=true)
+![App Screenshot](https://marekpistorius.github.io/xfce-nameday-plugin/images/screenshot.png)
 
   
 ## Tech Stack
