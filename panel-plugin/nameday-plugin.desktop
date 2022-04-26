@@ -1,9 +1,0 @@
-[Xfce Panel]
-Type=X-XFCE-PanelPlugin
-Name=Nameday
-Comment=What Nameday is in this day?
-Icon=/usr/share/xfce4/nameday/xfce4-nameday-plugin.svg
-X-XFCE-Module=nameday
-X-XFCE-Internal=false
-X-XFCE-Module-Path=/usr/lib/xfce4/panel/plugins
-X-XFCE-API=2.0
