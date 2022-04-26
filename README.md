@@ -23,7 +23,7 @@ Xfce's panel's plugin for show [Name Days](https://en.wikipedia.org/wiki/Name_da
   
 ## Tech Stack
 
-Depends on GTK+ 3.x and Xfce's 'standarts' Dependiences
+Depends on GTK+ 3 and Xfce's 'standarts' Dependiences
 
   
 ## Installation 
@@ -49,6 +49,6 @@ Contributions are always welcome!
   
 ## Feedback
 
-If you have any feedback, please reach out to us at me@maniu.eu
+If you have any feedback, please reach out to us at marek.pistorius@mpistorius.eu
 
   

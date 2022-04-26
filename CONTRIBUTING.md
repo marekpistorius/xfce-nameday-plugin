@@ -1,1 +1,1 @@
-Just respect Code of Conducut and be nice
+Respect **Code of Conducut** and be nice

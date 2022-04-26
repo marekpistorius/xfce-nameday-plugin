@@ -1,6 +1,6 @@
-2020-202x	mmaniu
-	* Bump to GTK+ to 3+
-2016-2017	mmaniu
+2020-202x	Marek Pistorius
+	* Bump to GTK+ to 3
+2016-2017	Marek Pistorius
 
 	* === Released 0.1.0 ===
 	* Fix some cppcheck warnings
