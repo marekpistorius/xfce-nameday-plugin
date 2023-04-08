@@ -1,6 +1,6 @@
 [![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.png?v=103)](https://opensource.org/licenses/GPL-3.0/) 
 [![CodeQL](https://github.com/marekpistorius/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/marekpistorius/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml) 
-![Maintenance](https://img.shields.io/maintenance/yes/2022)
+![Maintenance](https://img.shields.io/maintenance/yes/2023)
 
 # Xfce Nameday Plugin
 
