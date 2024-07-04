@@ -82,9 +82,9 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
             name: xfce-nameday-plugin
-            path: ${{ github.workspace }}/panel-plugin/libnameday.so
+            path: ${{ github.workspace }}/.libs/libnameday.so
     
     - name: Generate artifact attestation
       uses: actions/attest-build-provenance@v1
       with:
-          subject-path: ${{ github.workspace }}/panel-plugin/libnameday.so
+          subject-path: ${{ github.workspace }}/.libs/libnameday.so
