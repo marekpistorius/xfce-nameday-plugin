@@ -28,6 +28,8 @@ jobs:
       actions: read
       contents: read
       security-events: write
+      id-token: write
+      attestations: write
 
     strategy:
       fail-fast: false
@@ -77,3 +79,14 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
+    
+    - name: Upload
+      uses: actions/upload-artifact@v4
+      with:
+            name: xfce-nameday-plugin
+            path: ${{ github.workspace }}/panel-plugin/.libs/libnameday.so
+    
+    - name: Generate artifact attestation
+      uses: actions/attest-build-provenance@v1
+      with:
+          subject-path: ${{ github.workspace }}/panel-plugin/.libs/
