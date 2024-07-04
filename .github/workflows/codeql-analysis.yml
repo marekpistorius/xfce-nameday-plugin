@@ -87,4 +87,4 @@ jobs:
     - name: Generate artifact attestation
       uses: actions/attest-build-provenance@v1
       with:
-          subject-path: ${{ github.workspace }}/panel-plugin/.libs/libnameday.so
+          subject-path: ${{ github.workspace }}/panel-plugin/.libs/
