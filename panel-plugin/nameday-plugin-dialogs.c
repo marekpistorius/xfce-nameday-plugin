@@ -190,7 +190,7 @@ void nameday_configure(XfcePanelPlugin *plugin,
 void nameday_about (XfcePanelPlugin *plugin)
 {
    	gtk_show_about_dialog(NULL, "copyright", _("Namedays applet for Xfce"),
-								"license", "GPLv2, Me <maniu at pm dot me>,2020",
+								"license", "GPLv2, Me <me at maniu dot eu>,2025",
 								"program-name", _("Namedays Plugin"),
 								"version", VERSION,
 								"website", PLUGIN_WEBSITE,

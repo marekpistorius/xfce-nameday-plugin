@@ -13,7 +13,7 @@ Xfce's panel's plugin for show [Name Days](https://en.wikipedia.org/wiki/Name_da
 - Show next [custom] number of Name Days
 - Search in namedays
 - Show date of Easter
-- GTK+ version 3.00 or latter
+- GTK+ version 3 or latter
 
   
 ## Screenshots
