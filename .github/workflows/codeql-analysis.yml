@@ -81,6 +81,7 @@ jobs:
     #    uses a compiled language
 
     - run: |
+        echo "$TRUNKVER"
         touch README
         ./autogen.sh --prefix=/usr
         make
