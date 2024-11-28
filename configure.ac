@@ -7,12 +7,13 @@ dnl
 dnl ***************************
 dnl *** Version information ***
 dnl ***************************
-m4_define([nameday_version_major], [0])
-m4_define([nameday_version_minor], [1])
-m4_define([nameday_version_micro], [0])
-m4_define([nameday_version_build], [r@REVISION@])
-m4_define([nameday_version_tag], [git])
-m4_define([nameday_version], [nameday_version_major().nameday_version_minor().nameday_version_micro()ifelse(nameday_version_tag(), [bzr], [nameday_version_tag()-nameday_version_build()], [nameday_version_tag()])])
+dnl m4_define([nameday_version_major], [0])
+dnl m4_define([nameday_version_minor], [1])
+dnl m4_define([nameday_version_micro], [0])
+dnl m4_define([nameday_version_build], [r@REVISION@])
+dnl m4_define([nameday_version_tag], [git])
+dnl m4_define([nameday_version], [nameday_version_major().nameday_version_minor().nameday_version_micro()ifelse(nameday_version_tag(), [bzr], [nameday_version_tag()-nameday_version_build()], [nameday_version_tag()])])
+m4_define([nameday_version], "$TRUNKVER" )
 m4_pattern_allow([^AM_NLS$])
 
 dnl ***************************
