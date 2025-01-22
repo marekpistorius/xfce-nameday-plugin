@@ -42,7 +42,7 @@ AC_PROG_LD()
 AC_PROG_INSTALL()
 LT_PREREQ([2.2.6])
 LT_INIT([disable-static])
-AC_PROG_INTLTOOL()
+IT_PROG_INTLTOOL([0.35.0])
 
 dnl **********************************
 dnl *** Check for standard headers ***
