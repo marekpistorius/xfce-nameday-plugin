@@ -42,7 +42,7 @@ GList* create_list_namedays(const gchar* _file)
 
 	file = g_fopen(_file, "r");
 
-	 if( file == NULL)
+	 if( NULL == file )
 		  return list;
 
 	 while (fgets(sData,256,file) != NULL)
@@ -60,7 +60,7 @@ gchar *findNamedaysInFile(gchar *_file, gchar *name)
 	char sData[256];
 	file = g_fopen(_file, "r");
 
-	if( file == NULL)
+	if(NULL == file)
 		  return NULL;
 
 	 while (fgets(sData,256,file) != NULL)
@@ -89,8 +89,9 @@ gchar *NamedayInFebruaryLeapYear(gchar *file)
 	gchar name[366];
 	f = g_fopen(file, "r");
 
-	if(f == NULL)
+	if(NULL == f)
 		return NULL;
+	
 	if (fgets(name,366,f)!= NULL)
 	{
 		fclose(f);

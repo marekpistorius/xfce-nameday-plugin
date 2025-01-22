@@ -37,7 +37,6 @@
 
 /* default settings */
 #define DEFAULT_LANG NAMEDAY_PATH_GLOBAL "data/czech.dat"
-
 #define DEFAULT_COUNT 5
 #define UPDATE_TIME      1800
 
@@ -406,7 +405,7 @@ static gint nmd_compare(GtkTreeModel *model, GtkTreeIter *a , GtkTreeIter *b, gp
 	gint ret = 0;
 	
 	gtk_tree_model_get(model, a, 0, &name1, -1);
-    gtk_tree_model_get(model, b, 0, &name2, -1);
+  gtk_tree_model_get(model, b, 0, &name2, -1);
 	
 	if (name1 == NULL || name2 == NULL)
     {
@@ -551,23 +550,25 @@ static gboolean on_tooltip_cb (GtkWidget        *widget,
   
   if(G_UNLIKELY(!date))
   {
-		gtk_tooltip_set_text (tooltip, _("Cannot update date"));
+		  gtk_tooltip_set_text (tooltip, _("Cannot update date"));
   }
-  else {
-	gchar *markup_text = NULL;  
-	strcpy(mar_text,"");
-	for(int i = 0;i < count;i++)
-	{
-	  g_date_add_days(date,i);	
-	  gchar *text = load_nm(date,nmday);
-	  if(text) {
-			strcat(mar_text, text);
-			strcat(mar_text, "\n");
-		}
-	}	  
-	markup_text = g_markup_escape_text(mar_text,-1);
+  else
+  {
+	   gchar *markup_text = NULL;  
+	   strcpy(mar_text,"");
+	   for(int i = 0; i < count; i++)
+	   {
+	       g_date_add_days(date,i);	
+	       gchar *text = load_nm(date,nmday);
+	       if(text) {
+			   strcat(mar_text, text);
+			   strcat(mar_text, "\n");
+		    }
+	   }	  
+	
+    markup_text = g_markup_escape_text(mar_text,-1);
 	  
-  gtk_tooltip_set_markup (tooltip, markup_text);
+    gtk_tooltip_set_markup (tooltip, markup_text);
   }
   return TRUE;
 }

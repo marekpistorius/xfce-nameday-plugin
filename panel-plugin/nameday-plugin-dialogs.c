@@ -47,7 +47,7 @@ void apply_options (xfcenameday_dialog *dialog)
 	
 	tmp = load_nm(date,dialog->nmdplg);
 	
-	if(G_LIKELY(tmp!= NULL))
+	if(G_LIKELY(tmp != NULL))
 	{
 		gtk_label_set_text(GTK_LABEL(dialog->nmdplg->label), tmp);
 	}	
@@ -67,7 +67,6 @@ nameday_configure_response (GtkWidget    *dialog,
   if (response == GTK_RESPONSE_HELP)
     {
       /* show help */
-      //todo: change?
       result = g_spawn_command_line_async ("exo-open --launch WebBrowser " PLUGIN_WEBSITE, NULL);
 
       if (G_UNLIKELY (result == FALSE))
@@ -108,7 +107,7 @@ xfcenameday_dialog * create_config_dialog(NamedaysPlugin *data, GtkWidget *vbox)
 	label2 = gtk_label_new (_("Set Count of Tooltips Namedays"));
 	hbox = gtk_box_new (GTK_ORIENTATION_VERTICAL,BORDER);
 	dialog->nmdplg->combo = gtk_combo_box_text_new();
-    //TODO: not path directly?
+  //TODO: not path directly?
 	list = getdirlist(NAMEDAY_PATH_GLOBAL "/data/");
 
 	for(stmp = list; stmp ;stmp = g_list_next(stmp),i++)
@@ -118,7 +117,7 @@ xfcenameday_dialog * create_config_dialog(NamedaysPlugin *data, GtkWidget *vbox)
 		  if(strcmp(((gchar *)stmp->data),data->setting1) == 0)
 				gtk_combo_box_set_active(GTK_COMBO_BOX(dialog->nmdplg->combo),i--);
 				
-		g_free(stmp->data);		
+			g_free(stmp->data);		
 	}
 	
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
@@ -135,9 +134,12 @@ xfcenameday_dialog * create_config_dialog(NamedaysPlugin *data, GtkWidget *vbox)
 static void update_config(NamedaysPlugin *data)
 {
 	gchar *text = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(data->combo));
+	
 	if(G_UNLIKELY(text!= NULL))
 		data->setting1 = g_strdup(text);
+	
 	gint count = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(data->spin));
+	
 	if(G_UNLIKELY(count < 0))
 		data->setcount = count;
 }
@@ -166,7 +168,6 @@ void nameday_configure(XfcePanelPlugin *plugin,
   gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dlg))),vbox,TRUE,TRUE,0 );
 
   /* set dialog icon */
-  //todo probaly?
   gtk_window_set_icon_name (GTK_WINDOW (dlg), "xfce4-settings");
   
   dialog = create_config_dialog (nmd, vbox);
