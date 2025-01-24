@@ -46,7 +46,7 @@ jobs:
       run: 
         sudo apt-get update  
     - name: Install Dependencies
-      run: sudo apt install build-essential g++ gcc xfce4-dev-tools libxfce4panel-2.0-dev gettext libxfce4ui-2-dev libxfce4util-dev 
+      run: sudo apt install build-essential autopoint g++ gcc xfce4-dev-tools libxfce4panel-2.0-dev gettext libxfce4ui-2-dev libxfce4util-dev 
 
     - name: Generate trunkver
       id: trunkver
