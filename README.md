@@ -1,8 +1,14 @@
 [![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.png?v=103)](https://opensource.org/licenses/GPL-3.0/) 
+
 [![CodeQL](https://github.com/marekpistorius/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/marekpistorius/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml) 
-![Maintenance](https://img.shields.io/maintenance/yes/2025)
+
+
+![Maintenance](https://img.shields.io/maintenance/no/2026)
 
 # Xfce Nameday Plugin
+
+
+
 
 Xfce's panel's plugin for show [Name Days](https://en.wikipedia.org/wiki/Name_day) .
 
@@ -30,15 +36,33 @@ Depends on GTK+ 3 and Xfce's 'standarts' Dependiences
 
 Install **Xfce-Nameday-Plugin** with 
 
+
+
+
+
 ```bash 
   ./autogen.sh --prefix=/usr/
+
+
+
+
+
   make
   make install 
 ```
     
 ## Authors and Acknowledgement
 
+
+
+
+
+
+
 - [@marekpistorius](https://www.github.com/marekpistorius) for development and design.
+
+
+
 Xfce's Team for Xfce Desktop Enviroments
   
 ## Contributing
@@ -52,3 +76,14 @@ Contributions are always welcome!
 If you have any feedback, please reach out to us at marek.pistorius@mpistorius.eu
 
   
+
+
+
+
+
+
+
+
+
+
+
