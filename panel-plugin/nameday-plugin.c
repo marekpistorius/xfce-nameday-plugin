@@ -113,16 +113,16 @@ gchar *load_nm(GDate *date, NamedaysPlugin *nmday)
 {
 	guint index;
 	
-	if(g_date_valid(date))
-	{
-		index = g_date_get_day_of_year(date);
-		if( (index > 0) && (index < 367) )
-		{
-			DBG("Load");
-			return (gchar*)g_list_nth (nmday->namedays_list,index);
-		}
-	}
-
+	if(!g_date_valid(date) ||  !nmday->namedays_list )
+		return NULL;
+	guint index = g_date_get_day_of_year(date); // 1..366
+	if( index == 0)
+		return NULL;
+	
+	guint list_len = g_list_length(nmday->namedays_list); 
+	if (index > list_len) // protect out-of-range return NULL; 
+			return (gchar*)g_list_nth_data (nmday->namedays_list, index - 1);
+	
 	return NULL;	
 }
 
