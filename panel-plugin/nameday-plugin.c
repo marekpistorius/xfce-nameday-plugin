@@ -1,5 +1,5 @@
 ﻿/* 
-* (C) 2024-2025 Marek Pistorius
+* (C) 2024-2026 Marek Pistorius
 * This file is part of xfce-nameday-plugin.
 * xfce-nameday-plugin is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 *
@@ -499,10 +499,8 @@ void onCopy(GtkWidget *widget, gpointer data)
 {
 	NamedaysPlugin *nm = (NamedaysPlugin *)data;
 	const gchar *text = gtk_label_get_text(GTK_LABEL(nm->label));
-	g_autofree gchar* _text = NULL;
-	sprintf(_text,_("Namedays have %s"),text);
-	gtk_clipboard_set_text(gtk_clipboard_get(GDK_SELECTION_CLIPBOARD), _text, strlen(_text));
-	
+	g_autofree gchar *_text = g_strdup_printf(("Namedays have %s"), text); 
+	gtk_clipboard_set_text(gtk_clipboard_get(GDK_SELECTION_CLIPBOARD), _text, -1);
 }
 
 void onCalendar(GtkWidget *widget, gpointer data)
