@@ -3,7 +3,7 @@
 [![CodeQL](https://github.com/marekpistorius/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/marekpistorius/xfce-nameday-plugin/actions/workflows/codeql-analysis.yml) 
 
 
-![Maintenance](https://img.shields.io/maintenance/no/2026)
+![Maintenance](https://img.shields.io/maintenance/yes/2026)
 
 # Xfce Nameday Plugin
 
