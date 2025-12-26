@@ -1,4 +1,8 @@
-﻿0.1.0
+0.1.1
+=====
+Bug fixes
+
+0.1.0
 =====
 - Add basic overview Calendar with namedays
 
@@ -22,3 +26,4 @@
 - Czech&Slovak namedays
 - Tooltips for five day after today
 - Search date of nameday
+
