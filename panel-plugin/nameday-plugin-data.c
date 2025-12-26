@@ -1,9 +1,9 @@
 /* 
 * (C) 2024-2025 Marek Pistorius
 * This file is part of xfce-nameday-plugin.
-* xfce-nameday-plugin is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+* xfce-nameday-plugin is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the[...]
 *
-* xfce-nameday-plugin is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+* xfce-nameday-plugin is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU[...]
 *
 * You should have received a copy of the GNU General Public License along with Xfce-nameday-plugin. If not, see <https://www.gnu.org/licenses/>.
 */
@@ -26,70 +26,140 @@
 #include "nameday-utils.h"
 #include "nameday-plugin-data.h"
 
+/*
+ * create_list_namedays:
+ * - Reads the file fully and splits it by lines.
+ * - For each line takes the text after the last '|' (if present),
+ *   trims it and appends to a GList (owned strings).
+ * - Returns the list (NULL if file can't be read or no entries).
+ * - Caller must free the list and each string (g_list_free_full(list, g_free)).
+ */
 GList* create_list_namedays(const gchar* _file)
 {
+	gchar *contents = NULL;
+	gsize length = 0;
 
-	FILE *file;
-	char sData[256];
-	GList* list;
+	if (!_file)
+		return NULL;
 
-	file = g_fopen(_file, "r");
+	if (!g_file_get_contents(_file, &contents, &length, NULL))
+		return NULL;
 
-	 if( NULL == file )
-		  return list;
+	GList *list = NULL;
+	gchar **lines = g_strsplit(contents, "\n", 0);
 
-	 while (fgets(sData,256,file) != NULL)
-	 {
-		char *tmp = strrchr( sData, '|');
-		g_list_append(list, g_strdup(tmp+1));
-	 }
-	fclose(file);
+	for (gint i = 0; lines[i] != NULL; ++i)
+	{
+		gchar *line = lines[i];
+		if (*line == '\0')
+			continue;
+
+		char *tmp = strrchr(line, '|');
+		if (!tmp)
+			continue;
+
+		/* duplicate and strip whitespace/newline */
+		gchar *name = g_strdup(tmp + 1);
+		g_strstrip(name);
+		if (*name != '\0')
+			list = g_list_append(list, name);
+		else
+			g_free(name);
+	}
+
+	g_strfreev(lines);
+	g_free(contents);
 	return list;
 }
 
+/*
+ * findNamedaysInFile:
+ * - Searches for a line where the token after the first '|' matches 'name' (case-sensitive).
+ * - If found, returns a newly-allocated string containing everything BEFORE the last '|'
+ *   (trimmed). Caller must free the returned string.
+ * - Returns NULL if not found or on error.
+ */
 gchar *findNamedaysInFile(gchar *_file, gchar *name)
 {
-	FILE *file;
-	char sData[256];
-	file = g_fopen(_file, "r");
+	gchar *contents = NULL;
+	gsize length = 0;
 
-	if(NULL == file)
-		  return NULL;
+	if (!_file || !name)
+		return NULL;
 
-	 while (fgets(sData,256,file) != NULL)
-	 {
-			char *tmp = strchr(sData, '|');
-			char *tmp2;
-		  	char *stmp = g_strdup(g_strstrip(g_strdup(tmp+1)));
+	if (!g_file_get_contents(_file, &contents, &length, NULL))
+		return NULL;
 
-		  	if(g_strcmp0 (stmp,name) == 0)
+	gchar *result = NULL;
+	gchar **lines = g_strsplit(contents, "\n", 0);
+
+	for (gint i = 0; lines[i] != NULL; ++i)
+	{
+		gchar *line = lines[i];
+		if (*line == '\0')
+			continue;
+
+		/* first '|' separates left part and the token we compare with 'name' */
+		char *first_pipe = strchr(line, '|');
+		if (!first_pipe)
+			continue;
+
+		gchar *token = g_strdup(first_pipe + 1);
+		g_strstrip(token);
+
+		if (g_strcmp0(token, name) == 0)
+		{
+			/* take everything before the last '|' (if present) */
+			char *last_pipe = strrchr(line, '|');
+			if (last_pipe)
 			{
-				char *dat;
-				tmp2 = strrchr(sData, '|');
-				gint end = tmp2-sData+1;
-				dat = g_substr(sData,0,end-2);
-				fclose(file);
-				return g_strdup(dat);
+				gsize len_before = (gsize)(last_pipe - line);
+				/* duplicate and strip */
+				result = g_strndup(line, len_before);
+				g_strstrip(result);
 			}
-	 }
-	 fclose(file);
-	 return NULL;
+			g_free(token);
+			break;
+		}
+		g_free(token);
+	}
+
+	g_strfreev(lines);
+	g_free(contents);
+	return result; /* may be NULL if not found */
 }
 
+/*
+ * NamedayInFebruaryLeapYear:
+ * - Reads first (non-empty) line from file and returns it trimmed.
+ * - Caller must free the returned string.
+ */
 gchar *NamedayInFebruaryLeapYear(gchar *file)
 {
-	FILE *f = NULL;
-	gchar name[366];
-	f = g_fopen(file, "r");
-
-	if(NULL == f)
+	if (!file)
 		return NULL;
-	
-	if (fgets(name,366,f)!= NULL)
+
+	gchar *contents = NULL;
+	gsize length = 0;
+
+	if (!g_file_get_contents(file, &contents, &length, NULL))
+		return NULL;
+
+	gchar *result = NULL;
+	gchar **lines = g_strsplit(contents, "\n", 0);
+
+	/* find first non-empty line */
+	for (gint i = 0; lines[i] != NULL; ++i)
 	{
-		fclose(f);
-		return g_strdup(name);
+		if (lines[i][0] == '\0')
+			continue;
+
+		result = g_strdup(lines[i]);
+		g_strstrip(result);
+		break;
 	}
-	fclose(f);
-	return NULL;
+
+	g_strfreev(lines);
+	g_free(contents);
+	return result;
 }
