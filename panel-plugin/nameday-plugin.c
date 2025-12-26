@@ -115,7 +115,7 @@ gchar *load_nm(GDate *date, NamedaysPlugin *nmday)
 	
 	if(!g_date_valid(date) ||  !nmday->namedays_list )
 		return NULL;
-	guint index = g_date_get_day_of_year(date); // 1..366
+	index = g_date_get_day_of_year(date); // 1..366
 	if( index == 0)
 		return NULL;
 	
