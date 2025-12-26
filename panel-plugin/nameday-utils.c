@@ -37,11 +37,12 @@ gchar* g_substr (const gchar* string,
 /* Just Search files in path */
 GList *getdirlist(gchar *path)
 {
-  GDir *dir = g_dir_open(path,0,NULL);
+GError *err;	
+  GDir *dir = g_dir_open(path,0,&err);
   GList *lists = NULL;
   const gchar * files;
   gchar *ext = NULL,*leap = NULL;
-
+ 	
  if (dir == NULL) {
         g_warning("getdirlist: failed to open directory '%s': %s", path ? path : "(null)", err ? err->message : "unknown error");
         g_clear_error(&err);
