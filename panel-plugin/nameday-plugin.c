@@ -121,9 +121,10 @@ gchar *load_nm(GDate *date, NamedaysPlugin *nmday)
 	
 	guint list_len = g_list_length(nmday->namedays_list); 
 	if (index > list_len) // protect out-of-range return NULL; 
-			return (gchar*)g_list_nth_data (nmday->namedays_list, index - 1);
+			return NULL;	
+
+	return (gchar*)g_list_nth_data (nmday->namedays_list, index - 1);
 	
-	return NULL;	
 }
 
 static gboolean update_nameday(NamedaysPlugin *data)
