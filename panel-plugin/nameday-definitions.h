@@ -1,5 +1,5 @@
 /* 
-* (C) 2024-2025 Marek Pistorius
+* (C) 2024-2026 Marek Pistorius
 * This file is part of xfce-nameday-plugin.
 * xfce-nameday-plugin is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 *
@@ -13,3 +13,4 @@
 #define PLUGIN_WEBSITE "https://marekpistorius.github.io/xfce-nameday-plugin/"
 
 //#define VERSION "1.0.2"
+
