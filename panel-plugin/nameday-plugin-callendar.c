@@ -60,19 +60,20 @@ void initDialogWithCalandar(XfcePanelPlugin *plugin, NamedaysPlugin *nm)
 	box = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
 	gtk_container_add(GTK_CONTAINER(box),nmd_cal->main_widget);
 	gtk_widget_show_all(nmd_cal->main_widget);
-	gtk_calendar_set_detail_func(GTK_CALENDAR(nmd_cal->calendar),(GtkCalendarDetailFunc)onDetailFuncs,(gpointer)nm,g_free);
+	gtk_calendar_set_detail_func(GTK_CALENDAR(nmd_cal->calendar),(GtkCalendarDetailFunc)onDetailFuncs,(gpointer)nm,NULL);
 
 	g_autoptr(GDate) date = g_date_new();
 	g_date_set_time_t(date,time(NULL));
 
-	if(!date) {
+	if(date) {
 		gtk_calendar_mark_day(GTK_CALENDAR(nmd_cal->calendar),g_date_get_day(date));
 	}
 
 	g_signal_connect(nmd_cal->calendar,"day-selected",G_CALLBACK(onDaySelected),nmd_cal);
 
 	int res = gtk_dialog_run(GTK_DIALOG(dlg));
-	if(res == GTK_RESPONSE_OK)
-		gtk_widget_hide(dlg);
+	if(res == GTK_RESPONSE_OK);
+	
+	gtk_widget_destroy(dlg);
 
 }
