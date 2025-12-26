@@ -1,5 +1,5 @@
 /* 
-* (C) 2024-2025 Marek Pistorius
+* (C) 2024-2026 Marek Pistorius
 * This file is part of xfce-nameday-plugin.
 * xfce-nameday-plugin is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 *
@@ -100,7 +100,7 @@ xfcenameday_dialog * create_config_dialog(NamedaysPlugin *data, GtkWidget *vbox)
 	label2 = gtk_label_new (_("Set Count of Tooltips Namedays"));
 	hbox = gtk_box_new (GTK_ORIENTATION_VERTICAL,BORDER);
 	dialog->nmdplg->combo = gtk_combo_box_text_new();
-  //TODO: not path directly?
+
 	list = getdirlist(NAMEDAY_PATH_GLOBAL "/data/");
 
 	for(stmp = list; stmp ;stmp = g_list_next(stmp),i++)
@@ -184,7 +184,7 @@ void nameday_configure(XfcePanelPlugin *plugin,
 void nameday_about (XfcePanelPlugin *plugin)
 {
    	gtk_show_about_dialog(NULL, "copyright", _("Namedays applet for Xfce"),
-								"license", "GPLv2, Me <me at maniu dot eu>,2025",
+								"license", "GPLv2, Me <me at maniu dot eu>,2025-2026",
 								"program-name", _("Namedays Plugin"),
 								"version", VERSION,
 								"website", PLUGIN_WEBSITE,
