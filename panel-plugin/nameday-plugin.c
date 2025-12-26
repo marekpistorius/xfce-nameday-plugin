@@ -379,8 +379,8 @@ static void onEasters(GtkWidget *widget, gpointer data)
   {
     g_autofree gchar *tmp = getEaster(gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(local_entry1)));
     showDialog(tmp);
-    gtk_widget_destroy (dialog);
   }
+	gtk_widget_destroy (dialog);
 }
 
 static gboolean on_match_select(GtkEntryCompletion *widget,
@@ -438,7 +438,7 @@ static void onSearchNmD(GtkWidget *widget, gpointer data)
   g_autoptr(GDate) date = g_date_new();
   g_date_set_time_t (date, time (NULL));
 
-  dialog = gtk_dialog_new_with_buttons (_("Date of Easter"),
+  dialog = gtk_dialog_new_with_buttons (_("Search for Nameday"),
 					NULL,
 					GTK_DIALOG_MODAL| GTK_DIALOG_DESTROY_WITH_PARENT,
 					_("OK"),
@@ -449,7 +449,7 @@ static void onSearchNmD(GtkWidget *widget, gpointer data)
 
   content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
 
-  hbox = gtk_hbox_new (TRUE, 8);
+  hbox =  gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 8);
   gtk_box_pack_start (GTK_BOX (content_area), hbox, FALSE, FALSE, 0);
 
