@@ -478,7 +478,7 @@ static void onSearchNmD(GtkWidget *widget, gpointer data)
   	
 	if(nmday->namedays_list)
 	{ 
-		g_queue_foreach(nmday->namedays_list,(GFunc)functor,(gpointer)model);
+		g_list_foreach(nmday->namedays_list,(GFunc)functor,(gpointer)model);
 	}
 	gtk_entry_completion_set_model(completion, GTK_TREE_MODEL(model));
                 
