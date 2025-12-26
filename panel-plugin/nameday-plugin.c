@@ -153,7 +153,7 @@ static gboolean update_nameday(NamedaysPlugin *data)
 		gtk_label_set_text(GTK_LABEL(data->label),_("Don't go here"));	
 	}	
 	
-	GDateTime* gtime = g_date_time_new_now_local(); 
+	g_autoptr(GDateTime) gtime = g_date_time_new_now_local(); 
 	hour = g_date_time_get_hour(gtime);
 	
   if(hour < 12)
