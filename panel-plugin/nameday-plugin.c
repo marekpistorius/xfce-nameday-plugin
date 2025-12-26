@@ -274,7 +274,7 @@ nameday_construct (XfcePanelPlugin *plugin)
   nmday = nameday_new (plugin);
   g_autoptr(GDate) date = g_date_new();
   g_date_set_time_t(date,time(NULL));
-  gboolean bISLeap = g_date_is_leap_year(date->year);
+  gboolean bISLeap = g_date_is_leap_year(g_date_get_year(date));
   
 	nmday->namedays_list = create_list_namedays(nmday->setting1);
   /* add the ebox to the panel */
