@@ -16,6 +16,7 @@
 #endif
 
 #include <gtk/gtk.h>
+#include <time.h>
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4panel/libxfce4panel.h>
 
