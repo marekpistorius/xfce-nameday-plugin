@@ -76,4 +76,6 @@ void initDialogWithCalandar(XfcePanelPlugin *plugin, NamedaysPlugin *nm)
 	
 	gtk_widget_destroy(dlg);
 
+	g_slice_free(nameday_calendar, nmd_cal);
+
 }
