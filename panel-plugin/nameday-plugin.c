@@ -224,6 +224,9 @@ nameday_free (XfcePanelPlugin *plugin,
   if (svt && svt->updatetimeout > 0)
     g_source_remove (svt->updatetimeout);	
 
+if (svt->namedays_list)
+    g_list_free_full(svt->namedays_list, g_free);	
+
   /* destroy the panel widgets */
   gtk_widget_destroy (svt->hvbox);
 
