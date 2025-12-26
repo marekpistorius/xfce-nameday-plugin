@@ -585,5 +585,8 @@ getEaster(int year)
 
 static gchar * getNamedayDay(gchar *sname, NamedaysPlugin *nmday)
 {
-	return g_strdup_printf(_("Namedays for name %s is at %s"), sname, findNamedaysInFile(nmday->setting1, sname));
+  gchar *found = findNamedaysInFile(nmday->setting1, sname);
+  if (found == NULL)
+    return g_strdup_printf(_("No nameday found for %s"), sname);
+  return g_strdup_printf(_("Namedays for name %s is at %s"), sname, found);
 }
