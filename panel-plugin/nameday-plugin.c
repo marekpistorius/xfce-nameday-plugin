@@ -524,7 +524,7 @@ void showDialog(gchar * tmp)
 							
 	gtk_dialog_run(GTK_DIALOG(dial));
 	gtk_widget_destroy (dial);
-
+	g_free(tmp); // free the allocated string
 }
 
 static gboolean on_tooltip_cb (GtkWidget        *widget,
@@ -589,5 +589,7 @@ static gchar * getNamedayDay(gchar *sname, NamedaysPlugin *nmday)
   gchar *found = findNamedaysInFile(nmday->setting1, sname);
   if (found == NULL)
     return g_strdup_printf(_("No nameday found for %s"), sname);
-  return g_strdup_printf(_("Namedays for name %s is at %s"), sname, found);
+  gchar *ret =  g_strdup_printf(_("Namedays for name %s is at %s"), sname, found);
+  g_free(found);
+  return ret;	
 }
