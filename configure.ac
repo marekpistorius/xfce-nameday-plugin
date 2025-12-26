@@ -9,7 +9,7 @@ dnl *** Version information ***
 dnl ***************************
 dnl m4_define([nameday_version_major], [0])
 dnl m4_define([nameday_version_minor], [1])
-dnl m4_define([nameday_version_micro], [0])
+dnl m4_define([nameday_version_micro], [1])
 dnl m4_define([nameday_version_build], [r@REVISION@])
 dnl m4_define([nameday_version_tag], [git])
 dnl m4_define([nameday_version], [nameday_version_major().nameday_version_minor().nameday_version_micro()ifelse(nameday_version_tag(), [bzr], [nameday_version_tag()-nameday_version_build()], [nameday_version_tag()])])
@@ -19,7 +19,7 @@ m4_pattern_allow([^AM_NLS$])
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2016-2025
+AC_COPYRIGHT([Copyright (c) 2016-2026
         Marek <me@maniu.eu>])
 AC_INIT([xfce4-nameday-plugin], [nameday_version], [https://github.com/marekpistorius/xfce-nameday-plugin], [xfce4-nameday-plugin])
 AC_PREREQ([2.50])
@@ -76,9 +76,7 @@ dnl *** Check for required packages ***
 dnl ***********************************
 XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [3.0.0])
 XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [4.8.0])
-#XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.8.0])
 XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-2.0], [4.8.0])
-
 
 dnl ***********************************
 dnl *** Check for debugging support ***
