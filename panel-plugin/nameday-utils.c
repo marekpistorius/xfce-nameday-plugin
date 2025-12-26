@@ -40,7 +40,7 @@ GList *getdirlist(gchar *path)
 GError *err;	
   GDir *dir = g_dir_open(path,0,&err);
   GList *lists = NULL;
-  const gchar * files;
+  const gchar * name;
   gchar *ext = NULL,*leap = NULL;
  	
  if (dir == NULL) {
@@ -49,7 +49,7 @@ GError *err;
         return NULL;
     }	
 
-  while ( ( files = g_dir_read_name( dir)) != NULL)
+  while ( ( name = g_dir_read_name( dir)) != NULL)
   {
 
 		gchar *full = g_build_filename(path, name, NULL);
