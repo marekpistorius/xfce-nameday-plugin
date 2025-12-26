@@ -24,7 +24,7 @@
 
 static gchar* onDetailFuncs(GtkCalendar *calendar, guint year, guint month, guint day, gpointer data)
 {
-	g_autoptr(GDate) date = g_date_new_dmy(day, month, year);
+	g_autoptr(GDate) date = g_date_new_dmy(day, month + 1, year);
 	return g_strdup_printf(_("Nameday have %s "),load_nm(date,(NamedaysPlugin *)data));
 }
 
@@ -33,7 +33,7 @@ static void onDaySelected(GtkCalendar *calendar, gpointer data)
 	nameday_calendar *nmd_cal = (nameday_calendar*)data;
 	guint year = 0 ,month = 0,day = 0;
 	gtk_calendar_get_date(calendar,&year,&month,&day);
-	g_autoptr(GDate) date = g_date_new_dmy(day,month, year);
+	g_autoptr(GDate) date = g_date_new_dmy(day,month +1 , year);
 	gtk_label_set_text(GTK_LABEL(nmd_cal->label), load_nm(date,nmd_cal->plugin));
 }
 
