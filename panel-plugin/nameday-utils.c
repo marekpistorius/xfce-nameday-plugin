@@ -42,22 +42,28 @@ GList *getdirlist(gchar *path)
   const gchar * files;
   gchar *ext = NULL,*leap = NULL;
 
+ if (dir == NULL) {
+        g_warning("getdirlist: failed to open directory '%s': %s", path ? path : "(null)", err ? err->message : "unknown error");
+        g_clear_error(&err);
+        return NULL;
+    }	
+
   while ( ( files = g_dir_read_name( dir)) != NULL)
   {
 
-		gchar *tmp = g_strjoin(NULL,path,files,NULL);
-		{
-			if( g_file_test( tmp, G_FILE_TEST_IS_REGULAR ) )
-			{
-				ext = g_strstr_len(tmp,-1,".dat");
-				leap = g_strrstr(tmp,".leap");
+		gchar *full = g_build_filename(path, name, NULL);
+        if (full == NULL)
+            continue;
+		 if (g_file_test(full, G_FILE_TEST_IS_REGULAR))
+        {
+            /* use suffix checks instead of strstr to avoid accidental matches and pointer aliasing */
+            if (g_str_has_suffix(full, ".dat") && !g_str_has_suffix(full, ".leap"))
+            {
+                lists = g_list_prepend(lists, g_strdup(full));
+            }
+        }
 
-				if(ext && !leap)
-				{
-					lists = g_list_prepend( lists, g_strdup( tmp ) );
-				}
-			}
-		}
+        g_free(full);
 	}
   g_dir_close(dir);
 
