@@ -219,6 +219,10 @@ nameday_free (XfcePanelPlugin *plugin,
   if (G_UNLIKELY (dialog != NULL))
     gtk_widget_destroy (dialog);
 
+/* remove scheduled update if set */
+  if (svt && svt->updatetimeout > 0)
+    g_source_remove (svt->updatetimeout);	
+
   /* destroy the panel widgets */
   gtk_widget_destroy (svt->hvbox);
 
