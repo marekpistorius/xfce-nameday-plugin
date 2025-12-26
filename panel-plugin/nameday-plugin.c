@@ -533,36 +533,28 @@ static gboolean on_tooltip_cb (GtkWidget        *widget,
 					GtkTooltip       *tooltip,
 					NamedaysPlugin *nmday)
 {
-  gchar mar_text[1000];	
-  g_autoptr(GDate) date;
-  time_t times = time(NULL);	
-  /* Actual Date and x after */
-  gint count = nmday->setcount;
-  date = g_date_new();
-  g_date_set_time_t (date, times);
-  
-  if(G_UNLIKELY(!date))
+ time_t times = time(NULL);
+  g_autoptr(GDate) start = g_date_new();
+  g_date_set_time_t(start, times);
+
+  GString *buf = g_string_new(NULL);
+  for (gint i = 0; i < nmday->setcount; i++)
   {
-		  gtk_tooltip_set_text (tooltip, _("Cannot update date"));
+    g_autoptr(GDate) tmp = g_date_new();
+    g_date_set_time_t(tmp, times);
+    g_date_add_days(tmp, i);
+    gchar *text = load_nm(tmp, nmday);
+    if (text)
+    {
+      g_string_append(buf, text);
+      g_string_append_c(buf, '\n');
+    }
   }
-  else
-  {
-	   gchar *markup_text = NULL;  
-	   strcpy(mar_text,"");
-	   for(int i = 0; i < count; i++)
-	   {
-	       g_date_add_days(date,i);	
-	       gchar *text = load_nm(date,nmday);
-	       if(text) {
-			   strcat(mar_text, text);
-			   strcat(mar_text, "\n");
-		    }
-	   }	  
-	
-    markup_text = g_markup_escape_text(mar_text,-1);
-	  
-    gtk_tooltip_set_markup (tooltip, markup_text);
-  }
+
+  g_autofree gchar *markup_text = g_markup_escape_text(buf->str, -1);
+  gtk_tooltip_set_markup(tooltip, markup_text);
+  g_string_free(buf, TRUE);
+
   return TRUE;
 }
 
