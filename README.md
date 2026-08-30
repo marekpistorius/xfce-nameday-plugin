@@ -17,7 +17,7 @@ Xfce's panel's plugin for show [Name Days](https://en.wikipedia.org/wiki/Name_da
 
 - Show Name Day of Day
 - Show next [custom] number of Name Days
-- Search in namedays
+- Search in Namedays
 - Show date of Easter
 - GTK+ version 3 or latter
 
@@ -37,16 +37,8 @@ Depends on GTK+ 3 and Xfce's 'standarts' Dependiences
 Install **Xfce-Nameday-Plugin** with 
 
 
-
-
-
 ```bash 
   ./autogen.sh --prefix=/usr/
-
-
-
-
-
   make
   make install 
 ```
@@ -55,13 +47,7 @@ Install **Xfce-Nameday-Plugin** with
 
 
 
-
-
-
-
 - [@marekpistorius](https://www.github.com/marekpistorius) for development and design.
-
-
 
 Xfce's Team for Xfce Desktop Enviroments
   
