@@ -20,7 +20,7 @@ dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
 AC_COPYRIGHT([Copyright (c) 2016-2028
-        Marek <me@maniu.eu>])
+        Marek <marek.pistorius@mpistorius.eu>])
 AC_INIT([xfce4-nameday-plugin], [nameday_version], [https://github.com/marekpistorius/xfce-nameday-plugin], [xfce4-nameday-plugin])
 AC_PREREQ([2.50])
 AC_CANONICAL_TARGET()
