@@ -19,7 +19,7 @@ m4_pattern_allow([^AM_NLS$])
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2016-2026
+AC_COPYRIGHT([Copyright (c) 2016-2028
         Marek <me@maniu.eu>])
 AC_INIT([xfce4-nameday-plugin], [nameday_version], [https://github.com/marekpistorius/xfce-nameday-plugin], [xfce4-nameday-plugin])
 AC_PREREQ([2.50])
